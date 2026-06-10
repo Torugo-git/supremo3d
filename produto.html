@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supremo 3D - Detalhes do Mascote</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            fundoLoja: '#ffffff',
+            fundoGeral: '#f8fafc',
+            textoForte: '#1e293b',
+            textoLeve: '#64748b',
+            bordaLoja: '#f1f5f9',
+            verdeArena: '#00cc6a',
+            verdeArenaHover: '#00b35c'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #f8fafc; color: #1e293b; }
+    .produto-shadow {
+      filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0 10px 10px rgba(0, 0, 0, 0.05));
+    }
+  </style>
+
+  <script src="pixel.js" defer></script>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+  <header class="w-full bg-fundoLoja border-b border-bordaLoja sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center text-textoLeve hover:text-verdeArena font-bold text-sm transition-colors">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Voltar à Galeria
+      </a>
+      <div class="text-2xl font-heading font-black tracking-tighter text-textoForte flex items-center italic uppercase">
+        SUPREMO<span class="text-verdeArena ml-1">3D</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <div class="flex justify-center items-center relative py-10">
+        <span class="absolute top-0 left-0 bg-red-600 text-white text-xs font-heading font-black px-3 py-1 rounded-sm uppercase tracking-wider shadow-sm z-10">-15% OFF</span>
+        <img id="imagemProduto" src="urubu1.png" alt="Mascote 3D" class="produto-shadow w-full max-w-md h-auto object-contain mix-blend-multiply">
+      </div>
+
+      <div class="flex flex-col">
+        <div class="text-xs font-bold text-verdeArena tracking-widest uppercase mb-3 border-l-2 border-verdeArena pl-2">Série Clássicos 2026</div>
+        
+        <h1 id="nomeProduto" class="text-3xl md:text-5xl font-heading font-black text-textoForte uppercase leading-none tracking-tight">
+          Carregando...
+        </h1>
+        
+        <p class="text-textoLeve mt-6 text-sm leading-relaxed font-medium pb-6 border-b border-bordaLoja">
+          A glória das arquibancadas materializada para a sua estante. Colecionável desenvolvido com tecnologia de impressão 3D de alta definição e pintura detalhada. Uma peça de destaque ideal para torcedores apaixonados, perfeita para decorar setups gamers, escritórios ou a sua sala de troféus.
+        </p>
+
+        <div class="mt-6">
+          <span id="precoAntigo" class="text-sm line-through text-textoLeve block font-medium">De R$ --,-- por:</span>
+          <div class="flex items-end space-x-3 mt-1">
+            <span id="precoAtual" class="text-4xl md:text-5xl font-black text-textoForte tracking-tighter">R$ --,--</span>
+            <span class="text-xs font-heading font-black bg-verdeArena text-fundoLoja px-2 py-1 rounded-sm uppercase tracking-wider mb-1.5 shadow-sm">À Vista</span>
+          </div>
+          <p class="text-xs text-textoLeve mt-2 font-medium">Processamento automático, imediato e seguro.</p>
+        </div>
+
+        <button onclick="finalizarCompra()" class="w-full mt-8 bg-verdeArena text-white hover:bg-verdeArenaHover text-lg font-heading font-black py-4 md:py-5 rounded-lg transition-all uppercase shadow-lg hover:shadow-xl hover:-translate-y-1 flex justify-center items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          Comprar Agora com Segurança
+        </button>
+
+        <div class="mt-8 flex justify-between items-center text-[10px] md:text-xs font-bold text-textoLeve uppercase tracking-wider px-2 bg-fundoLoja py-4 rounded-lg border border-bordaLoja">
+          <span class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 mr-1.5 text-verdeArena" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg> Garantia Total</span>
+          <span class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 mr-1.5 text-verdeArena" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg> Embalagem Rígida</span>
+          <span class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 mr-1.5 text-verdeArena" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Envio Rápido</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full bg-fundoLoja border-t border-bordaLoja py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <div class="text-2xl font-heading font-black tracking-tighter text-textoForte mb-2 uppercase italic">
+        SUPREMO<span class="text-verdeArena ml-1">3D</span>
+      </div>
+      <p class="text-xs text-textoLeve font-medium">&copy; 2026 Supremo 3D. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const bancoMascotes = {
+      urubu: { 
+        nome: "Urubu", 
+        img: "urubu1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/BVGMK70G6D" 
+      },
+      gaviao: { 
+        nome: "Gavião", 
+        img: "gavião1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/8LGY5EACY4" 
+      },
+      porco: { 
+        nome: "Porco", 
+        img: "porco1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/F722DUOALA" 
+      },
+      galo: { 
+        nome: "Galo Doido", 
+        img: "galo1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/MDQQLRSPHO" 
+      },
+      bira: { 
+        nome: "Bira", 
+        img: "bira1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/3KDZ7L8XIU" 
+      },
+      almirante: { 
+        nome: "Almirante", 
+        img: "almirante1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/F72PQXSKD0" 
+      },
+      guerreirinho: { 
+        nome: "Guerreirinho", 
+        img: "guerreirinho1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/ITSHN2EOHX" 
+      },
+      saci: { 
+        nome: "Saci", 
+        img: "saci1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/DMSB3CSHOH" 
+      },
+      raposa: { 
+        nome: "Raposa", 
+        img: "raposa1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/D03SKKML5U" 
+      },
+      baleia: { 
+        nome: "Baleia", 
+        img: "baleia1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/P8JI24SXD8" 
+      },
+      santopaulo: { 
+        nome: "Santo Paulo", 
+        img: "santopaulo1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/4BAK819HCL" 
+      },
+      canarinho: { 
+        nome: "Canarinho Pistola", 
+        img: "canarinho1.png", 
+        precoAtual: 200.00, 
+        precoAntigo: 235.90, 
+        checkoutUrl: "https://supremo3d.pay.yampi.com.br/r/NLD42DPQTQ" 
+      }
+    };
+
+    let mascoteAtivo = null;
+
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const idMascote = urlParams.get('id');
+
+      mascoteAtivo = bancoMascotes[idMascote] || bancoMascotes.urubu;
+
+      const formatadorBRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+      document.getElementById('nomeProduto').innerText = mascoteAtivo.nome;
+      document.getElementById('imagemProduto').src = mascoteAtivo.img;
+      document.getElementById('imagemProduto').alt = mascoteAtivo.nome;
+      document.getElementById('precoAntigo').innerText = `De ${formatadorBRL.format(mascoteAtivo.precoAntigo)} por:`;
+      document.getElementById('precoAtual').innerText = formatadorBRL.format(mascoteAtivo.precoAtual);
+      document.title = `Supremo 3D - Estatueta ${mascoteAtivo.nome}`;
+    };
+
+    function finalizarCompra() {
+      const nomeProduto = mascoteAtivo.nome;
+      const precoProduto = mascoteAtivo.precoAtual;
+      const urlDestino = mascoteAtivo.checkoutUrl;
+      
+      if (window.MascotesTracking) {
+        window.MascotesTracking.trackAddToCart(nomeProduto, precoProduto);
+        window.MascotesTracking.trackInitiateCheckout(nomeProduto, precoProduto);
+      }
+
+      setTimeout(function() {
+        window.location.href = urlDestino;
+      }, 150);
+    }
+  </script>
+</body>
+</html>

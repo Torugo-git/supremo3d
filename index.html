@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supremo 3D - Galeria de Colecionáveis</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            fundoLoja: '#ffffff',
+            fundoGeral: '#f8fafc',
+            textoForte: '#1e293b',
+            textoLeve: '#64748b',
+            bordaLoja: '#f1f5f9',
+            verdeArena: '#00cc6a'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #f8fafc; color: #1e293b; }
+    
+    .boneco-shadow {
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+      transition: all 0.3s ease-in-out;
+    }
+
+    .item-galeria:hover .boneco-shadow {
+      transform: scale(1.1);
+      filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15));
+    }
+  </style>
+
+  <script src="pixel.js" defer></script>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+  <header class="w-full bg-fundoLoja border-b border-bordaLoja sticky top-0 z-50">
+    <div class="bg-verdeArena text-white text-center text-xs font-bold py-2 tracking-widest uppercase">
+      Lote LIMITADO de produção. Estoque renovado semanalmente.
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-3xl font-heading font-black tracking-tighter text-textoForte flex items-center italic uppercase">
+        SUPREMO<span class="text-verdeArena ml-1">3D</span>
+      </div>
+
+      <div class="hidden md:flex flex-1 max-w-xl mx-8 relative">
+        <input type="text" placeholder="Buscar mascote..." class="w-full bg-fundoGeral border border-bordaLoja text-textoForte text-sm rounded-xl font-medium py-3 px-5 focus:outline-none focus:border-verdeArena transition">
+      </div>
+
+      <div class="flex items-center space-x-6">
+        <button class="text-textoLeve hover:text-verdeArena transition flex flex-col items-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+          <span class="text-[10px] font-bold uppercase mt-1">Conta</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-16 flex-grow">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-heading font-black text-textoForte uppercase tracking-tight">Galeria de Mascotes</h2>
+      <p class="text-textoLeve mt-2 font-medium">Toque no mascote para ver detalhes e fotos da estatueta.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-20">
+      
+      <a href="produto.html?id=urubu" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="urubu1.png" alt="Urubu" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Urubu</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=gaviao" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="gavião1.png" alt="Gavião" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Gavião</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=porco" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="porco1.png" alt="Porco" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Porco</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=galo" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="galo1.png" alt="Galo Doido" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Galo Doido</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=bira" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="bira1.png" alt="Bira" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Bira</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=almirante" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="almirante1.png" alt="Almirante" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Almirante</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=guerreirinho" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="guerreirinho1.png" alt="Guerreirinho" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Guerreirinho</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=saci" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="saci1.png" alt="Saci" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Saci</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=raposa" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="raposa1.png" alt="Raposa" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Raposa</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=baleia" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="baleia1.png" alt="Baleia" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Baleia</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=santopaulo" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="santopaulo1.png" alt="Santo Paulo" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Santo Paulo</h3>
+        </div>
+      </a>
+
+      <a href="produto.html?id=canarinho" class="item-galeria flex flex-col items-center group text-center cursor-pointer">
+        <img src="canarinho1.png" alt="Canarinho Pistola" class="boneco-shadow h-64 md:h-72 w-auto object-contain mix-blend-multiply">
+        <div class="pt-6">
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase tracking-wide group-hover:text-verdeArena transition-colors">Canarinho Pistola</h3>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="w-full bg-fundoLoja border-t border-bordaLoja py-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <div class="text-2xl font-heading font-black tracking-tighter text-textoForte mb-2 uppercase italic">
+        SUPREMO<span class="text-verdeArena ml-1">3D</span>
+      </div>
+      <p class="text-xs text-textoLeve font-medium">&copy; 2026 Supremo 3D. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
