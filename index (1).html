@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supremo 3D — Colecionáveis & Mascotes em Impressão 3D</title>
+  <meta name="description" content="Supremo 3D | Estatuetas colecionáveis dos maiores mascotes do futebol brasileiro em impressão 3D de alta definição e pintura artesanal.">
+  <meta property="og:title" content="Supremo 3D — Galeria Oficial de Colecionáveis">
+  <meta property="og:description" content="A glória das arquibancadas na sua estante. Colecionáveis em 3D de alta definição com base personalizada.">
+  <meta property="og:url" content="https://supremo3d.com.br/">
+  <meta property="og:image" content="https://supremo3d.com.br/urubu1.png">
+  <link rel="canonical" href="https://supremo3d.com.br/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            fundoLoja: '#ffffff',
+            fundoGeral: '#f8fafc',
+            textoForte: '#0f172a',
+            textoLeve: '#64748b',
+            bordaLoja: '#e2e8f0',
+            verdeArena: '#00cc6a',
+            verdeArenaHover: '#00b35c',
+            arenaDark: '#0b1120'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #f8fafc; color: #0f172a; scroll-behavior: smooth; }
+
+    .boneco-shadow {
+      filter: drop-shadow(0 14px 20px rgba(15, 23, 42, 0.14)) drop-shadow(0 4px 8px rgba(15, 23, 42, 0.08));
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+    }
+
+    .item-galeria:hover .boneco-shadow {
+      transform: translateY(-8px) scale(1.06);
+      filter: drop-shadow(0 24px 28px rgba(0, 204, 106, 0.2)) drop-shadow(0 10px 14px rgba(15, 23, 42, 0.12));
+    }
+
+    .hero-arena {
+      background:
+        radial-gradient(circle at 80% 30%, rgba(0, 204, 106, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
+        linear-gradient(135deg, #0b1120 0%, #111c33 60%, #091326 100%);
+    }
+  </style>
+
+  <script src="pixel.js" defer></script>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+  <!-- TOPO PROMOCIONAL -->
+  <div class="bg-verdeArena text-white text-center text-[11px] sm:text-xs font-extrabold py-2 px-4 tracking-wider uppercase">
+    🔥 Lote Limitado — Série Clássicos 2026 com <span class="underline">15% OFF no PIX</span> + Frete Seguro para todo o Brasil
+  </div>
+
+  <!-- HEADER -->
+  <header class="w-full bg-fundoLoja/95 backdrop-blur-md border-b border-bordaLoja sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-3">
+      <a href="index.html" class="text-2xl sm:text-3xl font-heading font-black tracking-tighter text-textoForte flex items-center italic uppercase">
+        SUPREMO<span class="text-verdeArena ml-1">3D</span>
+      </a>
+
+      <!-- Busca Desktop -->
+      <div class="hidden md:flex flex-1 max-w-lg mx-6 relative">
+        <svg class="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="searchInputDesktop" oninput="handleSearch(this.value)" type="text" placeholder="Buscar por mascote, clube ou região (ex: Urubu, Flamengo, Minas)..."
+               class="w-full bg-fundoGeral border border-bordaLoja text-textoForte text-xs sm:text-sm rounded-xl font-medium py-2.5 pl-10 pr-4 focus:outline-none focus:border-verdeArena focus:bg-white transition">
+      </div>
+
+      <!-- Ações do Topo -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button onclick="openTrackModal()" class="text-textoLeve hover:text-verdeArena transition flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-slate-100 text-xs font-bold">
+          <svg class="w-4 h-4 text-verdeArena" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <span class="hidden sm:inline">Rastrear Pedido</span>
+        </button>
+
+        <button onclick="toggleCartDrawer(true)" class="relative bg-arenaDark hover:bg-slate-800 text-white px-3.5 py-2.5 rounded-xl flex items-center gap-2 text-xs font-bold transition shadow">
+          <svg class="w-4 h-4 text-verdeArena" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span>Sacola</span>
+          <span id="cartCountBadge" class="bg-verdeArena text-white text-[10px] font-black px-1.5 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+        </button>
+      </div>
+
+      <!-- Busca Mobile -->
+      <div class="w-full md:hidden relative mt-1">
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="searchInputMobile" oninput="handleSearch(this.value)" type="text" placeholder="Buscar mascote ou time..."
+               class="w-full bg-fundoGeral border border-bordaLoja text-textoForte text-xs rounded-xl font-medium py-2.5 pl-9 pr-4 focus:outline-none focus:border-verdeArena focus:bg-white transition">
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero-arena text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-7 space-y-5 text-center md:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-verdeArena/15 border border-verdeArena/40 text-verdeArena text-xs font-extrabold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-verdeArena animate-ping"></span>
+          Coleção Oficial • Impressão 3D High-Detail
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-heading font-black uppercase leading-tight tracking-tight">
+          A Glória das Arquibancadas <span class="text-verdeArena">na Sua Estante.</span>
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto md:mx-0 leading-relaxed">
+          Estatuetas colecionáveis de 22cm esculpidas em 3D de altíssima precisão, acabamento em verniz UV e base personalizada com o escudo em relevo.
+        </p>
+        <div class="flex flex-wrap justify-center md:justify-start gap-3 pt-2">
+          <a href="#galeria" class="bg-verdeArena hover:bg-verdeArenaHover text-white font-heading font-black text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-lg shadow-verdeArena/25 transition hover:-translate-y-0.5">
+            Escolher Meu Mascote ↓
+          </a>
+          <a href="#como-e-feito" class="bg-white/10 hover:bg-white/15 border border-white/15 text-white font-bold text-xs sm:text-sm px-5 py-3.5 rounded-xl transition">
+            Especificações Técnicas
+          </a>
+        </div>
+        <div class="pt-4 grid grid-cols-3 gap-3 max-w-lg mx-auto md:mx-0 border-t border-white/10 text-left">
+          <div>
+            <p class="text-verdeArena font-heading font-black text-lg sm:text-xl">22 cm</p>
+            <p class="text-[11px] text-slate-400">Altura padrão c/ base</p>
+          </div>
+          <div>
+            <p class="text-verdeArena font-heading font-black text-lg sm:text-xl">100% 3D</p>
+            <p class="text-[11px] text-slate-400">Pintura rica em detalhes</p>
+          </div>
+          <div>
+            <p class="text-verdeArena font-heading font-black text-lg sm:text-xl">15% OFF</p>
+            <p class="text-[11px] text-slate-400">No PIX ou até 12x</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destaque Visual triplo no Hero -->
+      <div class="md:col-span-5 flex justify-center items-center relative">
+        <div class="absolute w-64 h-64 bg-verdeArena/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative bg-white/95 rounded-3xl p-6 shadow-2xl border border-white/20 max-w-xs w-full text-center">
+          <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-heading font-black px-2.5 py-1 rounded-md uppercase">Top #1 Vendas</span>
+          <img src="urubu1.png" alt="Mascote em Destaque" class="h-56 w-auto mx-auto object-contain mix-blend-multiply boneco-shadow">
+          <p class="mt-3 text-xs font-bold uppercase text-verdeArena tracking-wider">Série Clássicos 2026</p>
+          <h2 class="text-lg font-heading font-black text-slate-900 uppercase">Acabamento de Estúdio</h2>
+          <p class="text-xs text-slate-500 mt-0.5">De <span class="line-through">R$ 235,90</span> por <strong class="text-slate-900 text-sm">R$ 200,00</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA DE MASCOTES -->
+  <main id="galeria" class="max-w-7xl mx-auto px-4 py-14 flex-grow w-full">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-verdeArena">Catálogo Oficial</span>
+        <h2 class="text-2xl sm:text-4xl font-heading font-black text-textoForte uppercase tracking-tight mt-0.5">Galeria de Mascotes</h2>
+        <p class="text-textoLeve text-xs sm:text-sm mt-1 font-medium">Toque no mascote para ver a ficha técnica completa ou adicione direto à sacola.</p>
+      </div>
+
+      <!-- Filtros por Região -->
+      <div class="flex flex-wrap gap-2" id="regionFilters">
+        <button onclick="filterByRegion('todos')" data-region="todos" class="region-btn bg-arenaDark text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">Todos (12)</button>
+        <button onclick="filterByRegion('RJ')" data-region="RJ" class="region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition">Rio de Janeiro (4)</button>
+        <button onclick="filterByRegion('SP')" data-region="SP" class="region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition">São Paulo (4)</button>
+        <button onclick="filterByRegion('MG')" data-region="MG" class="region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition">Minas Gerais (2)</button>
+        <button onclick="filterByRegion('RS')" data-region="RS" class="region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition">Sul (1)</button>
+        <button onclick="filterByRegion('BR')" data-region="BR" class="region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition">Seleção (1)</button>
+      </div>
+    </div>
+
+    <!-- Grid renderizado dinamicamente -->
+    <div id="mascotesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7"></div>
+
+    <!-- Estado vazio de busca -->
+    <div id="emptySearchState" class="hidden text-center py-16 bg-white rounded-3xl border border-bordaLoja">
+      <p class="text-lg font-heading font-bold text-textoForte">Nenhum mascote encontrado para sua busca</p>
+      <p class="text-xs text-textoLeve mt-1">Tente buscar por outro nome ou clique abaixo para ver toda a coleção.</p>
+      <button onclick="resetFilters()" class="mt-4 bg-verdeArena text-white text-xs font-bold px-5 py-2.5 rounded-xl">Mostrar Todos os 12 Mascotes</button>
+    </div>
+  </main>
+
+  <!-- SEÇÃO: COMO É FEITO / ESPECIFICAÇÕES -->
+  <section id="como-e-feito" class="bg-white border-y border-bordaLoja py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-verdeArena">Qualidade de Colecionador</span>
+        <h2 class="text-2xl sm:text-3xl font-heading font-black text-textoForte uppercase mt-1">Por que as estatuetas Supremo 3D são únicas?</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-fundoGeral border border-bordaLoja space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-verdeArena/15 text-verdeArena flex items-center justify-center font-heading font-black">01</div>
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase">Modelagem Escultural 3D</h3>
+          <p class="text-xs text-textoLeve leading-relaxed">Cada mascote possui anatomia muscular, dobras de uniforme e expressões faciais modeladas digitalmente em altíssima resolução (camadas de 0.08mm).</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-fundoGeral border border-bordaLoja space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-verdeArena/15 text-verdeArena flex items-center justify-center font-heading font-black">02</div>
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase">Base Escudo em Relevo</h3>
+          <p class="text-xs text-textoLeve leading-relaxed">Todas as peças acompanham base rígida no formato do escudo com cores vibrantes e encaixe firme para exibir na mesa gamer, escritório ou estante.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-fundoGeral border border-bordaLoja space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-verdeArena/15 text-verdeArena flex items-center justify-center font-heading font-black">03</div>
+          <h3 class="text-base font-heading font-bold text-textoForte uppercase">Embalagem Anti-Impacto</h3>
+          <p class="text-xs text-textoLeve leading-relaxed">Enviamos para todo o Brasil em caixa reforçada com berço protetor interno e código de rastreio Correios/Transportadora atualizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES DE CLIENTES -->
+  <section class="max-w-7xl mx-auto px-4 py-14">
+    <div class="text-center mb-10">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-verdeArena">Avaliações Verificadas</span>
+      <h2 class="text-2xl sm:text-3xl font-heading font-black text-textoForte uppercase mt-1">Quem colocou na estante recomenda ⭐</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-2xl border border-bordaLoja shadow-sm space-y-3">
+        <div class="text-amber-400 text-sm">★★★★★</div>
+        <p class="text-xs text-slate-600 italic leading-relaxed">"Peguei o Urubu pro meu setup gamer e a qualidade impressiona pessoalmente. Pesadinho, firme na base e as cores do manto estão perfeitas!"</p>
+        <div class="pt-2 border-t border-slate-100 flex justify-between text-[11px]">
+          <strong class="text-slate-900">Matheus R. — Rio de Janeiro, RJ</strong>
+          <span class="text-verdeArena font-bold">✓ Compra Verificada</span>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-bordaLoja shadow-sm space-y-3">
+        <div class="text-amber-400 text-sm">★★★★★</div>
+        <p class="text-xs text-slate-600 italic leading-relaxed">"Comprei o Galo Doido de aniversário pro meu pai e ele ficou apaixonado. Veio super bem embalado no plástico bolha e chegou antes do prazo."</p>
+        <div class="pt-2 border-t border-slate-100 flex justify-between text-[11px]">
+          <strong class="text-slate-900">Henrique V. — Belo Horizonte, MG</strong>
+          <span class="text-verdeArena font-bold">✓ Compra Verificada</span>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-bordaLoja shadow-sm space-y-3">
+        <div class="text-amber-400 text-sm">★★★★★</div>
+        <p class="text-xs text-slate-600 italic leading-relaxed">"O Gavião e o Porco têm nível de action figure importada. Os detalhes do bico, chuteira e escudo na base são impecáveis."</p>
+        <div class="pt-2 border-t border-slate-100 flex justify-between text-[11px]">
+          <strong class="text-slate-900">Felipe A. — São Paulo, SP</strong>
+          <span class="text-verdeArena font-bold">✓ Compra Verificada</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-arenaDark text-slate-400 py-10 mt-auto border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div>
+        <div class="text-2xl font-heading font-black tracking-tighter text-white uppercase italic">
+          SUPREMO<span class="text-verdeArena ml-1">3D</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-1">Colecionáveis esportivos em impressão 3D de alta definição.</p>
+      </div>
+      <div class="text-xs space-y-1 text-center md:text-right">
+        <p>&copy; 2026 Supremo 3D. Todos os direitos reservados.</p>
+        <p class="text-[11px] text-slate-400">
+          Desenvolvido por <a href="https://torugo-git.github.io/torugo-dev/" target="_blank" rel="noopener" class="text-verdeArena hover:text-white font-bold underline underline-offset-2 transition-colors">Torugo Dev</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DRAWER LATERAL DA SACOLA -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-5 border-b border-bordaLoja flex items-center justify-between bg-slate-50">
+        <div>
+          <h3 class="font-heading font-black text-base uppercase text-textoForte">Sua Sacola 3D</h3>
+          <p class="text-[11px] text-textoLeve">Lote Série Clássicos 2026 (-15% OFF ativo)</p>
+        </div>
+        <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-full bg-white border border-bordaLoja flex items-center justify-center text-slate-600 hover:text-slate-900 font-bold">✕</button>
+      </div>
+
+      <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+      <div class="p-5 border-t border-bordaLoja bg-slate-50 space-y-3">
+        <div class="flex justify-between items-center text-xs text-textoLeve">
+          <span>Desconto Lote PIX (15%)</span>
+          <span class="text-verdeArena font-bold">Aplicado nos itens</span>
+        </div>
+        <div class="flex justify-between items-center text-lg font-heading font-black text-textoForte">
+          <span>Total à Vista</span>
+          <span id="cartTotalValue" class="text-verdeArena">R$ 0,00</span>
+        </div>
+        <button onclick="openCheckoutModal()" class="w-full bg-verdeArena hover:bg-verdeArenaHover text-white font-heading font-black uppercase text-sm py-4 rounded-xl shadow-lg shadow-verdeArena/25 transition">
+          Finalizar Pedido Agora →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CHECKOUT INTERATIVO (PIX / CARTÃO) -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-bordaLoja max-h-[90vh] overflow-y-auto space-y-5">
+      <div class="flex items-center justify-between border-b border-bordaLoja pb-3">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-verdeArena">Checkout Seguro 256-bit</span>
+          <h3 class="text-lg font-heading font-black uppercase text-textoForte">Finalizar Compra — Supremo 3D</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+      </div>
+
+      <form onsubmit="submitOrderDemo(event)" class="space-y-3.5 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">Nome Completo *</label>
+            <input id="chkNome" required type="text" placeholder="Seu nome" class="w-full border border-bordaLoja rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-verdeArena">
+          </div>
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">WhatsApp com DDD *</label>
+            <input id="chkTel" required type="tel" placeholder="(11) 99999-9999" class="w-full border border-bordaLoja rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-verdeArena">
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="font-bold text-slate-700 block mb-1">CEP *</label>
+            <input id="chkCep" required type="text" maxlength="9" placeholder="00000-000" onblur="lookupCepCheckout(this.value)" class="w-full border border-bordaLoja rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-verdeArena">
+          </div>
+          <div class="col-span-2">
+            <label class="font-bold text-slate-700 block mb-1">Cidade / UF</label>
+            <input id="chkCidade" type="text" placeholder="Preenchido pelo CEP" class="w-full bg-slate-50 border border-bordaLoja rounded-xl px-3.5 py-2.5">
+          </div>
+        </div>
+        <div>
+          <label class="font-bold text-slate-700 block mb-1">Endereço de Entrega *</label>
+          <input id="chkEnd" required type="text" placeholder="Rua, número e complemento" class="w-full border border-bordaLoja rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-verdeArena">
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+          <div>
+            <p class="font-bold text-emerald-950">Resumo do Pedido</p>
+            <p id="chkSummaryItems" class="text-[11px] text-emerald-700 mt-0.5"></p>
+          </div>
+          <span id="chkSummaryTotal" class="text-base font-heading font-black text-emerald-700"></span>
+        </div>
+
+        <button type="submit" class="w-full bg-verdeArena hover:bg-verdeArenaHover text-white font-heading font-black uppercase text-sm py-4 rounded-xl shadow-lg transition">
+          Gerar Código do Pedido & PIX Instantâneo
+        </button>
+      </form>
+
+      <div id="orderSuccessBox" class="hidden p-4 rounded-2xl bg-slate-900 text-white text-center space-y-3">
+        <span class="inline-block px-3 py-1 rounded-full bg-verdeArena/20 text-verdeArena text-[11px] font-bold">✓ Pedido Reservado com Sucesso!</span>
+        <p class="text-xs text-slate-300">Seu código de acompanhamento foi gerado:</p>
+        <p id="generatedOrderCode" class="text-xl font-mono font-black text-verdeArena tracking-widest"></p>
+        <p class="text-[11px] text-slate-400">Para demonstração de portfólio: os dados do pedido foram validados com sucesso.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE RASTREIO -->
+  <div id="trackModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-bordaLoja space-y-4">
+      <div class="flex items-center justify-between border-b border-bordaLoja pb-3">
+        <h3 class="text-base font-heading font-black uppercase text-textoForte">Rastrear Pedido Supremo 3D</h3>
+        <button onclick="closeTrackModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold">✕</button>
+      </div>
+      <p class="text-xs text-textoLeve">Digite o código do seu pedido (ex: <code class="font-mono font-bold text-slate-800">SUP-2026</code>) para consultar o status da produção 3D e envio.</p>
+      <div class="flex gap-2">
+        <input id="trackCodeInput" type="text" placeholder="Ex: SUP-2026" class="flex-1 border border-bordaLoja rounded-xl px-3.5 py-2.5 text-xs font-mono uppercase focus:outline-none focus:border-verdeArena">
+        <button onclick="simulateTracking()" class="bg-verdeArena text-white font-bold text-xs px-4 py-2.5 rounded-xl">Consultar</button>
+      </div>
+      <div id="trackResultBox" class="hidden p-4 rounded-2xl bg-slate-50 border border-bordaLoja text-xs space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-slate-900" id="trackCodeTitle"></span>
+          <span class="px-2 py-0.5 rounded bg-verdeArena/15 text-verdeArena font-bold text-[10px]">Em Produção / Acabamento UV</span>
+        </div>
+        <p class="text-slate-600 text-[11px]">Sua estatueta está passando pela cura UV e inspeção de pintura. O código dos Correios será atualizado em breve.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CATALOGO_MASCOTES = [
+      { id: 'urubu', nome: 'Urubu', clube: 'Flamengo', regiao: 'RJ', img: 'urubu1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: 'Mais Vendido' },
+      { id: 'gaviao', nome: 'Gavião', clube: 'Corinthians', regiao: 'SP', img: 'gavião1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: 'Alta Procura' },
+      { id: 'porco', nome: 'Porco', clube: 'Palmeiras', regiao: 'SP', img: 'porco1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'galo', nome: 'Galo Doido', clube: 'Atlético-MG', regiao: 'MG', img: 'galo1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'bira', nome: 'Bira', clube: 'Botafogo', regiao: 'RJ', img: 'bira1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'almirante', nome: 'Almirante', clube: 'Vasco da Gama', regiao: 'RJ', img: 'almirante1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'guerreirinho', nome: 'Guerreirinho', clube: 'Fluminense', regiao: 'RJ', img: 'guerreirinho1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'saci', nome: 'Saci', clube: 'Internacional', regiao: 'RS', img: 'saci1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'raposa', nome: 'Raposa', clube: 'Cruzeiro', regiao: 'MG', img: 'raposa1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'baleia', nome: 'Baleia', clube: 'Santos', regiao: 'SP', img: 'baleia1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'santopaulo', nome: 'Santo Paulo', clube: 'São Paulo', regiao: 'SP', img: 'santopaulo1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: '' },
+      { id: 'canarinho', nome: 'Canarinho Pistola', clube: 'Seleção Brasileira', regiao: 'BR', img: 'canarinho1.png', precoAtual: 200.00, precoAntigo: 235.90, destaque: 'Edição Especial' }
+    ];
+
+    let regiaoAtiva = 'todos';
+    let termoBusca = '';
+    let sacola = JSON.parse(localStorage.getItem('supremo3d_cart') || '[]');
+
+    const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function renderGaleria() {
+      const grid = document.getElementById('mascotesGrid');
+      const emptyState = document.getElementById('emptySearchState');
+
+      const filtrados = CATALOGO_MASCOTES.filter(item => {
+        const matchRegiao = regiaoAtiva === 'todos' || item.regiao === regiaoAtiva;
+        const q = termoBusca.trim().toLowerCase();
+        const matchBusca = !q || item.nome.toLowerCase().includes(q) || item.clube.toLowerCase().includes(q) || item.regiao.toLowerCase().includes(q);
+        return matchRegiao && matchBusca;
+      });
+
+      if (filtrados.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtrados.map(item => `
+        <div class="item-galeria bg-white rounded-3xl border border-bordaLoja p-5 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-verdeArena/50 transition-all group relative">
+          <div class="flex items-center justify-between mb-2">
+            <span class="bg-red-600 text-white text-[10px] font-heading font-black px-2.5 py-0.5 rounded-md uppercase">-15% OFF</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">${item.clube} • ${item.regiao}</span>
+          </div>
+
+          <a href="produto.html?id=${item.id}" class="py-4 flex justify-center items-center">
+            <img src="${item.img}" alt="${item.nome}" loading="lazy" class="boneco-shadow h-56 w-auto object-contain mix-blend-multiply">
+          </a>
+
+          <div class="pt-3 border-t border-slate-100 space-y-2">
+            <div class="flex items-center justify-between">
+              <a href="produto.html?id=${item.id}" class="text-lg font-heading font-black text-textoForte uppercase group-hover:text-verdeArena transition-colors">${item.nome}</a>
+              <span class="text-[11px] font-bold text-amber-500">★ 4.9</span>
+            </div>
+
+            <div>
+              <span class="text-[11px] line-through text-slate-400 block">De ${brl.format(item.precoAntigo)}</span>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-2xl font-heading font-black text-textoForte">${brl.format(item.precoAtual)}</span>
+                <span class="text-[10px] font-extrabold text-verdeArena uppercase">no PIX</span>
+              </div>
+              <p class="text-[11px] text-slate-500">ou 12x de R$ 19,90 no cartão</p>
+            </div>
+
+            <div class="pt-2 grid grid-cols-5 gap-2">
+              <a href="produto.html?id=${item.id}" class="col-span-3 bg-slate-100 hover:bg-slate-200 text-textoForte font-bold text-xs py-2.5 rounded-xl text-center transition">
+                Ver Detalhes
+              </a>
+              <button onclick="addToCart('${item.id}')" class="col-span-2 bg-verdeArena hover:bg-verdeArenaHover text-white font-heading font-black text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1 shadow-sm">
+                <span>+ Sacola</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterByRegion(regiao) {
+      regiaoAtiva = regiao;
+      document.querySelectorAll('.region-btn').forEach(btn => {
+        if (btn.dataset.region === regiao) {
+          btn.className = 'region-btn bg-arenaDark text-white text-xs font-bold px-3.5 py-2 rounded-xl transition';
+        } else {
+          btn.className = 'region-btn bg-white border border-bordaLoja text-textoForte hover:border-verdeArena text-xs font-bold px-3.5 py-2 rounded-xl transition';
+        }
+      });
+      renderGaleria();
+    }
+
+    function handleSearch(val) {
+      termoBusca = val;
+      const d = document.getElementById('searchInputDesktop');
+      const m = document.getElementById('searchInputMobile');
+      if (d && d.value !== val) d.value = val;
+      if (m && m.value !== val) m.value = val;
+      renderGaleria();
+    }
+
+    function resetFilters() {
+      termoBusca = '';
+      handleSearch('');
+      filterByRegion('todos');
+    }
+
+    function saveCart() {
+      localStorage.setItem('supremo3d_cart', JSON.stringify(sacola));
+      updateCartUI();
+    }
+
+    function addToCart(id) {
+      const item = CATALOGO_MASCOTES.find(m => m.id === id);
+      if (!item) return;
+      const existing = sacola.find(i => i.id === id);
+      if (existing) {
+        existing.qtd += 1;
+      } else {
+        sacola.push({ id: item.id, nome: item.nome, clube: item.clube, img: item.img, preco: item.precoAtual, qtd: 1 });
+      }
+      if (window.MascotesTracking) {
+        window.MascotesTracking.trackAddToCart(item.nome, item.precoAtual);
+      }
+      saveCart();
+      toggleCartDrawer(true);
+    }
+
+    function changeQty(id, delta) {
+      const idx = sacola.findIndex(i => i.id === id);
+      if (idx === -1) return;
+      sacola[idx].qtd += delta;
+      if (sacola[idx].qtd <= 0) sacola.splice(idx, 1);
+      saveCart();
+    }
+
+    function updateCartUI() {
+      const totalItems = sacola.reduce((acc, i) => acc + i.qtd, 0);
+      const totalPrice = sacola.reduce((acc, i) => acc + (i.preco * i.qtd), 0);
+      document.getElementById('cartCountBadge').innerText = totalItems;
+      document.getElementById('cartTotalValue').innerText = brl.format(totalPrice);
+
+      const list = document.getElementById('cartItemsList');
+      if (sacola.length === 0) {
+        list.innerHTML = `<div class="text-center py-12 text-xs text-slate-400">Sua sacola está vazia. Escolha um mascote na galeria!</div>`;
+        return;
+      }
+
+      list.innerHTML = sacola.map(i => `
+        <div class="flex items-center justify-between gap-3 p-3 rounded-2xl border border-bordaLoja bg-white">
+          <img src="${i.img}" alt="${i.nome}" class="w-14 h-14 object-contain mix-blend-multiply shrink-0">
+          <div class="flex-1 min-w-0">
+            <p class="font-heading font-black text-xs uppercase text-textoForte truncate">${i.nome}</p>
+            <p class="text-[11px] text-slate-400">${i.clube}</p>
+            <p class="text-xs font-bold text-verdeArena mt-0.5">${brl.format(i.preco * i.qtd)}</p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-slate-100 rounded-xl px-2 py-1">
+            <button onclick="changeQty('${i.id}', -1)" class="w-6 h-6 font-bold text-slate-700">-</button>
+            <span class="text-xs font-bold w-4 text-center">${i.qtd}</span>
+            <button onclick="changeQty('${i.id}', 1)" class="w-6 h-6 font-bold text-slate-700">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cartDrawer');
+      if (open) {
+        updateCartUI();
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function openCheckoutModal() {
+      if (sacola.length === 0) return;
+      toggleCartDrawer(false);
+      const total = sacola.reduce((acc, i) => acc + (i.preco * i.qtd), 0);
+      document.getElementById('chkSummaryItems').innerText = sacola.map(i => `${i.qtd}x ${i.nome}`).join(', ');
+      document.getElementById('chkSummaryTotal').innerText = brl.format(total);
+      document.getElementById('orderSuccessBox').classList.add('hidden');
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    async function lookupCepCheckout(cepVal) {
+      const clean = String(cepVal || '').replace(/\D/g, '');
+      if (clean.length !== 8) return;
+      try {
+        const res = await fetch(`https://viacep.com.br/ws/${clean}/json/`);
+        const data = await res.json();
+        if (!data.erro) {
+          document.getElementById('chkCidade').value = `${data.localidade} / ${data.uf}`;
+          if (data.logradouro) document.getElementById('chkEnd').value = `${data.logradouro}, ${data.bairro}`;
+        }
+      } catch (e) {}
+    }
+
+    function submitOrderDemo(e) {
+      e.preventDefault();
+      const code = 'SUP-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('generatedOrderCode').innerText = code;
+      document.getElementById('orderSuccessBox').classList.remove('hidden');
+      sacola = [];
+      saveCart();
+    }
+
+    function openTrackModal() {
+      const m = document.getElementById('trackModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeTrackModal() {
+      const m = document.getElementById('trackModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function simulateTracking() {
+      const val = (document.getElementById('trackCodeInput').value || 'SUP-2026').trim().toUpperCase();
+      document.getElementById('trackCodeTitle').innerText = `Pedido ${val}`;
+      document.getElementById('trackResultBox').classList.remove('hidden');
+    }
+
+    renderGaleria();
+    updateCartUI();
+  </script>
+</body>
+</html>
